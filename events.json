@@ -1,8 +1,24 @@
 [
   {
-    "key1": "value1"
+    "id": "1",
+    "slug": "maha-summit",
+    "title": "Maha Summit 2025",
+    "content": "Maha Summit 2025",
+    "date": "2025-03-01T00:00:00.000Z",
+    "location": "Mumbai, India",
+    "images": [
+        "picsum.photos/1280/720",
+    ],
   },
   {
-    "key2": "value2"
+    "id": "2",
+    "slug": "Event-2",
+    "title": "Event 2 title",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "date": "2025-03-01T00:00:00.000Z",
+    "location": "Mumbai, India",
+    "images": [
+        "picsum.photos/1280/720",
+    ],
   }
 ]
