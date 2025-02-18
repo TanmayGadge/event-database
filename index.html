@@ -20,6 +20,10 @@
             border-radius: 4px;
             font-family: monospace;
         }
+        .output-container {
+            position: relative;
+            margin-top: 10px;
+        }
         .output {
             background-color: #f5f5f5;
             padding: 15px;
@@ -42,6 +46,31 @@
         button:hover {
             background-color: #45a049;
         }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+        .copy-feedback {
+            position: absolute;
+            top: 10px;
+            right: 90px;
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .copy-feedback.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -53,7 +82,11 @@
     <button onclick="escapeQuotes()">Escape Quotes</button>
     
     <h3>Output:</h3>
-    <div id="output" class="output"></div>
+    <div class="output-container">
+        <div id="output" class="output"></div>
+        <button onclick="copyToClipboard()" class="copy-button">Copy</button>
+        <div id="copyFeedback" class="copy-feedback">Copied!</div>
+    </div>
 
     <script>
         function escapeQuotes() {
@@ -62,7 +95,20 @@
             document.getElementById('output').textContent = escaped;
         }
 
-        // Optional: Real-time conversion as user types
+        function copyToClipboard() {
+            const output = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(output).then(() => {
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.add('show');
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        // Real-time conversion as user types
         document.getElementById('input').addEventListener('input', escapeQuotes);
     </script>
 </body>
